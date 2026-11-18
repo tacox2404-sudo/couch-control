@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Couch Control</title>
+  <meta name="description" content="A retro CRT control room for TV, powered by TVMaze.">
+  <link rel="stylesheet" href="src/ui/styles.css">
+</head>
+<body>
+  <div class="bezel">
+    <header class="topbar">
+      <a class="logo" href="#/">COUCH<span>CONTROL</span></a>
+      <nav class="tabs" id="tabs" aria-label="Modes">
+        <a href="#/" data-mode="explorer">Explorer</a>
+        <a href="#/roulette" data-mode="roulette">Roulette</a>
+        <a href="#/binge" data-mode="binge">Binge-O-Meter</a>
+      </nav>
+    </header>
+    <main id="screen" tabindex="-1"></main>
+    <footer class="foot">Data by <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVMaze</a> (CC BY-SA)</footer>
+  </div>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

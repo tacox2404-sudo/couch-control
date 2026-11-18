@@ -3,7 +3,7 @@
 A retro CRT / VHS-neon control room for TV, powered by the free [TVMaze API](https://www.tvmaze.com/api).
 No API key, no backend, no build step: just open it and click.
 
-> Status: **step 1 – project scaffold.** The app itself is built in the steps below.
+> Status: **step 2 done** (API helper + Explorer). Roulette and Binge-O-Meter come next.
 
 ## Three modes
 
@@ -44,3 +44,13 @@ Data from [TVMaze](https://www.tvmaze.com), licensed CC BY-SA. Please keep attri
 ## License
 
 MIT
+
+## Run locally
+
+No build needed. From the repo root:
+
+```bash
+python3 -m http.server 8000
+```
+
+Then open http://localhost:8000.
