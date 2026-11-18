@@ -1,4 +1,5 @@
 import * as explorer from './modes/explorer/explorer.js';
+import { roulette } from './modes/roulette/roulette.js';
 import { h } from './ui/dom.js';
 
 const screen = document.getElementById('screen');
@@ -10,7 +11,7 @@ const routes = [
   [/^#\/search\/(shows|people)\/(.+)$/, (m) => explorer.search(screen, m[1], decodeURIComponent(m[2])), 'explorer'],
   [/^#\/show\/(\d+)$/, (m) => explorer.showPage(screen, m[1]), 'explorer'],
   [/^#\/person\/(\d+)$/, (m) => explorer.personPage(screen, m[1]), 'explorer'],
-  [/^#\/roulette$/, () => soon('ROULETTE', 'Lever loading... coming in step 3.'), 'roulette'],
+  [/^#\/roulette$/, () => roulette(screen), 'roulette'],
   [/^#\/binge(\/\d+)?$/, () => soon('BINGE-O-METER', 'Meter warming up... coming in step 4.'), 'binge'],
 ];
 

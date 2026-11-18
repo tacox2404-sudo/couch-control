@@ -47,4 +47,5 @@ export const getSeasons = (id) => get(`/shows/${id}/seasons`);
 export const getSchedule = (country, date) => get(`/schedule?country=${q(country)}&date=${q(date)}`);
 export const getPerson = (id) => get(`/people/${id}`);
 export const getCastCredits = (id) => get(`/people/${id}/castcredits?embed=show`);
-export const getShowPage = (page) => get(`/shows?page=${page}`);
+// Pages hold 250 shows each: keep in memory only, they are too big for sessionStorage.
+export const getShowPage = (page) => get(`/shows?page=${page}`, { persist: false });

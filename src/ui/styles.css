@@ -91,3 +91,25 @@ summary { cursor: pointer; font: 600 14px var(--mono); color: var(--yellow); }
   .row { grid-template-columns: 56px 1fr; }
   .row .net { display: none; }
 }
+
+/* ---- Roulette ---- */
+.machine { display: flex; gap: 16px; align-items: flex-start; margin-top: 12px; }
+.machine-body { flex: 1; background: var(--panel); border: 2px solid var(--pink); border-radius: 10px; padding: 16px; box-shadow: 0 0 24px rgba(255,46,151,.35), inset 0 0 30px rgba(0,0,0,.5); }
+.reel { height: 84px; display: grid; place-items: center; margin-bottom: 14px; background: #000; border: 2px solid var(--cyan); border-radius: 6px; padding: 0 12px; text-align: center; overflow: hidden;
+  font: 700 clamp(18px, 4vw, 30px) var(--mono); color: var(--cyan); text-shadow: 0 0 10px var(--cyan); }
+.reel.spinning { color: var(--yellow); border-color: var(--yellow); text-shadow: 0 0 10px var(--yellow); }
+.filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 14px; }
+.filter { display: flex; flex-direction: column; gap: 4px; font: 11px var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .1em; }
+.filter select { width: 100%; }
+.btn.big { width: 100%; font-size: 18px; padding: 14px; margin: 0; }
+.btn:disabled { opacity: .5; cursor: wait; }
+.lever { position: relative; width: 56px; height: 150px; background: none; border: 0; cursor: pointer; padding: 0; flex: none; }
+.lever .stick { position: absolute; left: 24px; top: 24px; width: 8px; height: 110px; background: linear-gradient(90deg, #888, #ddd, #888); border-radius: 4px; transition: transform .3s; transform-origin: bottom; }
+.lever .knob { position: absolute; left: 8px; top: 0; width: 40px; height: 40px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ff9ccc, var(--pink) 60%, #8a0c4f); box-shadow: 0 0 14px var(--pink); transition: transform .3s; z-index: 1; }
+.lever.pulled .knob { transform: translateY(90px); }
+.lever.pulled .stick { transform: scaleY(.35); }
+@media (prefers-reduced-motion: reduce) { .lever .knob, .lever .stick { transition: none; } }
+.jackpot { display: grid; grid-template-columns: 200px 1fr; gap: 20px; margin-top: 20px; padding: 16px; background: var(--panel); border: 1px solid var(--yellow); border-radius: 8px; box-shadow: 0 0 18px rgba(255,225,77,.25); }
+.pick { margin: 0 0 4px; font: 700 26px var(--mono); color: var(--yellow); text-shadow: 0 0 10px rgba(255,225,77,.6); }
+.clamp { display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+@media (max-width: 640px) { .jackpot { grid-template-columns: 1fr; } .machine { flex-direction: column-reverse; align-items: stretch; } .lever { display: none; } }
