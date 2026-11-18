@@ -1,5 +1,6 @@
 import * as explorer from './modes/explorer/explorer.js';
 import { roulette } from './modes/roulette/roulette.js';
+import * as binge from './modes/binge/binge.js';
 import { h } from './ui/dom.js';
 
 const screen = document.getElementById('screen');
@@ -12,7 +13,8 @@ const routes = [
   [/^#\/show\/(\d+)$/, (m) => explorer.showPage(screen, m[1]), 'explorer'],
   [/^#\/person\/(\d+)$/, (m) => explorer.personPage(screen, m[1]), 'explorer'],
   [/^#\/roulette$/, () => roulette(screen), 'roulette'],
-  [/^#\/binge(\/\d+)?$/, () => soon('BINGE-O-METER', 'Meter warming up... coming in step 4.'), 'binge'],
+  [/^#\/binge$/, () => binge.picker(screen), 'binge'],
+  [/^#\/binge\/(\d+)$/, (m) => binge.scoreboard(screen, m[1]), 'binge'],
 ];
 
 function render() {

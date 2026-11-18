@@ -113,3 +113,22 @@ summary { cursor: pointer; font: 600 14px var(--mono); color: var(--yellow); }
 .pick { margin: 0 0 4px; font: 700 26px var(--mono); color: var(--yellow); text-shadow: 0 0 10px rgba(255,225,77,.6); }
 .clamp { display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
 @media (max-width: 640px) { .jackpot { grid-template-columns: 1fr; } .machine { flex-direction: column-reverse; align-items: stretch; } .lever { display: none; } }
+
+/* ---- Binge-O-Meter ---- */
+.scoreboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 12px 0; }
+.stat { background: #000; border: 2px solid var(--cyan); border-radius: 6px; padding: 10px 12px; display: flex; flex-direction: column; box-shadow: inset 0 0 18px rgba(25,242,255,.12); }
+.stat .label { font: 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.digits { font: 700 28px var(--mono); color: var(--yellow); text-shadow: 0 0 10px rgba(255,225,77,.6); }
+.stat .sub, .stat output { font: 12px var(--mono); color: var(--cyan); }
+.pace { display: flex; align-items: center; gap: 10px; font: 13px var(--mono); color: var(--muted); }
+.pace input { flex: 1; max-width: 260px; padding: 0; accent-color: var(--pink); }
+.verdict { font: 700 20px var(--mono); color: var(--pink); text-shadow: 0 0 10px rgba(255,46,151,.6); margin: 14px 0 6px; }
+.curve-wrap { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 8px; }
+.curve { width: 100%; max-width: 640px; height: auto; display: block; }
+.curve .bar { fill: var(--pink); filter: drop-shadow(0 0 4px var(--pink)); }
+.curve .grid-line { stroke: var(--line); stroke-width: 1; }
+.curve .axis { fill: var(--muted); font: 11px var(--mono); }
+.curve .val { fill: var(--yellow); font: 700 11px var(--mono); }
+.extremes { font: 14px var(--mono); margin: 8px 0 0; }
+.extremes .good { color: var(--cyan); font-weight: 700; }
+.extremes .bad { color: var(--pink); font-weight: 700; }

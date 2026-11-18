@@ -3,7 +3,7 @@
 A retro CRT / VHS-neon control room for TV, powered by the free [TVMaze API](https://www.tvmaze.com/api).
 No API key, no backend, no build step: just open it and click.
 
-> Status: **step 3 done** (Explorer + Roulette). Binge-O-Meter is next.
+> Status: **step 4 done** (Explorer, Roulette, Binge-O-Meter). Polish and deploy are next.
 
 ## Three modes
 
