@@ -3,9 +3,9 @@
 A retro CRT / VHS-neon control room for TV, powered by the free [TVMaze API](https://www.tvmaze.com/api).
 No API key, no backend, no build step: just open it and click.
 
-**Live:** https://tacox2404-sudo.github.io/TV-Maze-API-Interface/
+**Live:** https://tacox2404-sudo.github.io/couch-control/
 
-> Status: **step 4 done** (Explorer, Roulette, Binge-O-Meter). Live on GitHub Pages.
+> Status: **complete**. All three modes (Explorer, Roulette, Binge-O-Meter) are built and live on GitHub Pages.
 
 ## Three modes
 
@@ -20,10 +20,10 @@ Roulette and Binge-O-Meter link into Explorer, so the fun layer always leads to 
 ## Roadmap
 
 1. [x] Repo scaffold, vision and style guide
-2. [ ] API helper (fetch, cache, rate-limit friendly) + Explorer
-3. [ ] Roulette
-4. [ ] Binge-O-Meter
-5. [ ] Polish and deploy to GitHub Pages
+2. [x] API helper (fetch, cache, rate-limit friendly) + Explorer
+3. [x] Roulette
+4. [x] Binge-O-Meter
+5. [x] Polish and deploy to GitHub Pages
 
 ## Structure
 
@@ -56,3 +56,14 @@ python3 -m http.server 8000
 ```
 
 Then open http://localhost:8000.
+
+## How to check that it works
+
+1. Open the live link above. Explorer shows tonight's TV schedule for the chosen country.
+2. Open Roulette and click SPIN. A random show appears with its year, status, genre and episode length.
+3. Open Binge-O-Meter and pick a show. For example Breaking Bad gives 62 episodes in 5 seasons, about 62 hours in total, and a rating curve per season.
+4. Every click is a real call to the TVMaze API (see [docs/API.md](docs/API.md)). No login, API key or backend is involved, and API text is shown as plain text or a small allow-list of safe tags.
+
+## Security
+
+No API key, token or secret is used anywhere in this project. See [SECURITY.md](SECURITY.md) to report a problem.
