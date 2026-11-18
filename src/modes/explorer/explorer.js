@@ -10,7 +10,10 @@ const status = (text, cls = '') => h('p', { class: 'status ' + cls }, text);
 async function guard(container, fn) {
   container.replaceChildren(status('TUNING...'));
   try { await fn(); }
-  catch (e) { container.replaceChildren(status(e.message || 'Signal lost.', 'err')); }
+  catch (e) {
+    container.replaceChildren(status(e.message || 'Signal lost.', 'err'),
+      h('button', { class: 'btn ghost', type: 'button', onclick: () => guard(container, fn) }, 'TRY AGAIN'));
+  }
 }
 
 export function showCard(show) {
@@ -54,6 +57,9 @@ export function home(root) {
   });
   country.addEventListener('change', load);
   root.replaceChildren(
+    h('div', { class: 'channels' },
+      h('a', { class: 'channel c1', href: '#/roulette' }, h('b', {}, 'ROULETTE'), h('span', {}, 'Let fate pick tonight’s show')),
+      h('a', { class: 'channel c2', href: '#/binge' }, h('b', {}, 'BINGE-O-METER'), h('span', {}, 'How long will it eat your life?'))),
     searchBar('shows', ''),
     h('h2', { class: 'h' }, 'TONIGHT ON TV'),
     h('div', { class: 'toolbar' }, h('label', {}, 'Region ', country)),

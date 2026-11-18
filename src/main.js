@@ -21,10 +21,26 @@ function render() {
   const hash = location.hash || '#/';
   const hit = routes.map(([re, fn, mode]) => [re.exec(hash), fn, mode]).find(([m]) => m);
   const [m, fn, mode] = hit || [null, () => screen.replaceChildren(h('p', { class: 'status err' }, 'Channel not found.')), ''];
-  document.querySelectorAll('#tabs a').forEach((a) => a.classList.toggle('on', a.dataset.mode === mode));
+  document.querySelectorAll('#tabs a').forEach((a) => {
+    const on = a.dataset.mode === mode;
+    a.classList.toggle('on', on);
+    if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+  });
   fn(m);
   window.scrollTo(0, 0);
+  screen.focus({ preventScroll: true });
 }
 
 addEventListener('hashchange', render);
 render();
+
+// Share: native share sheet when available, otherwise copy the link.
+const shareBtn = document.getElementById('share');
+const shared = document.getElementById('shared');
+shareBtn.addEventListener('click', async () => {
+  const data = { title: document.title, url: location.href };
+  try {
+    if (navigator.share) await navigator.share(data);
+    else { await navigator.clipboard.writeText(location.href); shared.textContent = 'Link copied!'; setTimeout(() => (shared.textContent = ''), 2500); }
+  } catch { /* user cancelled or clipboard blocked */ }
+});
